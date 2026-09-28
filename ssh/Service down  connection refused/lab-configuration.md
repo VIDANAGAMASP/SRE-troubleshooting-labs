@@ -1,5 +1,8 @@
-# Environment setup
+# Day 1 CTF — Incident #001: SSH Access Broken
 
+## Environment setup
+
+```bash
 apt-get update -qq && \
 apt-get install -y openssh-server openssh-client -qq && \
 mkdir -p /run/sshd && \
@@ -14,30 +17,42 @@ echo "SSH access is broken." && \
 echo "Target: localhost" && \
 echo "Goal: restore SSH access." && \
 echo "===================================="
+```
 
-# Challenge
+---
+
+## Challenge
 
 You are the on-call engineer.
 
-INCIDENT #001
+### INCIDENT #001
 
 SSH access to the server has stopped working.
 
-Target:
-    localhost
+**Target:**
 
-Reported error:
-    SSH connection cannot be established.
+```text
+localhost
+```
 
-Goal:
-    Restore SSH access.
+**Reported error:**
 
-Success condition:
-    ssh localhost
+```text
+SSH connection cannot be established.
+```
+
+**Goal:** Restore SSH access.
+
+**Success condition:**
+
+```bash
+ssh localhost
+```
 
 must successfully connect.
 
-Restrictions:
-    - Do not reinstall OpenSSH.
-    - Do not change authentication configuration.
-    - Diagnose the problem before fixing it.
+### Restrictions
+
+- Do not reinstall OpenSSH.
+- Do not change authentication configuration.
+- Diagnose the problem before fixing it.
