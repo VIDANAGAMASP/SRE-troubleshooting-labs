@@ -1,0 +1,43 @@
+# Environment setup
+
+apt-get update -qq && \
+apt-get install -y openssh-server openssh-client -qq && \
+mkdir -p /run/sshd && \
+systemctl enable ssh && \
+systemctl start ssh && \
+sleep 1 && \
+systemctl stop ssh && \
+echo "====================================" && \
+echo " SSH CTF #1 ENVIRONMENT CREATED" && \
+echo "====================================" && \
+echo "SSH access is broken." && \
+echo "Target: localhost" && \
+echo "Goal: restore SSH access." && \
+echo "===================================="
+
+# Challenge
+
+You are the on-call engineer.
+
+INCIDENT #001
+
+SSH access to the server has stopped working.
+
+Target:
+    localhost
+
+Reported error:
+    SSH connection cannot be established.
+
+Goal:
+    Restore SSH access.
+
+Success condition:
+    ssh localhost
+
+must successfully connect.
+
+Restrictions:
+    - Do not reinstall OpenSSH.
+    - Do not change authentication configuration.
+    - Diagnose the problem before fixing it.
