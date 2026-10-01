@@ -1,4 +1,4 @@
-# Day 1 CTF — Incident #001: SSH Access Broken
+# Day 1 — Incident #001: SSH Access Broken
 
 ## Environment setup
 
