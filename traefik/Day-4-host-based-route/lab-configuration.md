@@ -353,3 +353,5 @@ Service
  ↓
 Backend
 ```
+
+Goal: Find why api.example.com and web.example.com are not working and fix.
