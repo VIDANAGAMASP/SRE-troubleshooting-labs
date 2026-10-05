@@ -389,3 +389,7 @@ HTTP response
 For every response, ask:
 
 > "Who generated this response?"
+
+Goal:
+
+>All endpoints should reach backend and return a response from backend
