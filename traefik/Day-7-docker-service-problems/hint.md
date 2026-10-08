@@ -1,0 +1,1 @@
+# traefik is not in the same network as app so cant reach. add them to same network and find why if traefik was run  as an application in host instead of container it can reach app despite it being restricted to a network. A;so find how path pathprefix host declared when docker applications are the target.
