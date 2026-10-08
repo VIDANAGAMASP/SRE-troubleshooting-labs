@@ -1,6 +1,12 @@
-Killercoda setup
+# Day 6 CTF — Docker Provider
+
+## Killercoda setup
+
 Use a fresh Ubuntu environment.
+
 Run this complete setup:
+
+```bash
 #!/bin/bash
 
 set -e
@@ -177,10 +183,17 @@ echo
 echo "=========================================="
 echo " Start investigating."
 echo "=========================================="
+```
 
-8. Your CTF
-Environment
+---
+
+## 8. Your CTF
+
+### Environment
+
 You have:
+
+```text
 Client
    |
    | HTTP :80
@@ -194,18 +207,31 @@ Docker container
    | :8080
    ↓
 Web application
+```
 
 The application is running inside Docker.
+
 Traefik is supposed to discover the application automatically.
-Symptoms
+
+### Symptoms
+
 When you access:
+
+```bash
 curl -v http://127.0.0.1
+```
 
 you don't get the expected application response.
+
 However, you have reason to believe the Docker container itself is running.
-Your mission
+
+### Your mission
+
 Determine why Traefik isn't routing the request correctly.
+
 You need to investigate all of these layers:
+
+```text
 Docker
    ↓
 Container
@@ -219,64 +245,50 @@ Router
 Service
    ↓
 Application
+```
 
-Useful commands
+### Useful commands
+
 Start with:
+
+```bash
 docker ps
+```
 
 Then:
+
+```bash
 docker inspect day6-webapp
+```
 
 Look specifically for:
+
+```text
 Labels
+```
 
 Check:
+
+```bash
 docker logs day6-webapp
+```
 
 Check Traefik:
+
+```bash
 systemctl status traefik
+```
 
 And:
+
+```bash
 tail -f /var/log/traefik.log
+```
 
 You can also inspect the container's network information:
+
+```bash
 docker inspect day6-webapp
-
-CTF Rules
-You may:
-- inspect Docker
-- inspect labels
-- inspect Traefik configuration
-- inspect logs
-- test HTTP
-- modify the incorrect Traefik label
-- recreate/restart the container after establishing the cause
-You may not:
-- use Traefik dashboard/API
-- use Kubernetes
-- add a file provider
-- manually configure the router in dynamic.yml
-- modify the application
-- randomly restart everything
-Your objective
-Don't simply make it work.
-Explain this chain:
-Client request
-      ↓
-Traefik entrypoint
-      ↓
-Docker provider
-      ↓
-Docker label
-      ↓
-Router rule
-      ↓
-Service
-      ↓
-Container
-      ↓
-Application
-
-And identify exactly which layer is broken.
+```
 
 Goal Reach with curl -v http:127.0.0.1:80 and curl -H "HOST: myapp.local" 127.0.0.1:80
