@@ -113,6 +113,12 @@ Inspect a network:
 docker network inspect <network>
 ```
 
+Add a container to a network:
+
+```bash
+docker network connect <network_name> <container_name_or_id>
+```
+
 A container can belong to one or more networks.
 
 Check a container:
@@ -247,4 +253,4 @@ Inspect:
 docker network inspect <network>
 ```
 
-This is the beginning of real infrastructure troubleshooting.
+
